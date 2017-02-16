@@ -1,0 +1,30 @@
+body {
+    background: #EEEEEE;
+    header {
+        background: $red;
+        color: white;
+        h1 {
+            font-size: 2rem;
+            font-family: $poppins;
+        }
+    }
+    #calculate {
+        font-family: $nunito;
+        .line {
+            div {
+                border-left: 0.1rem solid #9E9E9E;
+                border-bottom: 0.1rem solid #9E9E9E;
+            }
+            div:last-child {
+                background: #EF5350;
+                color: white;
+                border-right: 0.1rem solid #9E9E9E;
+            }
+        }
+        .line:first-child {
+            background: rgba(33, 33, 33, 1);
+            color: white;
+            font-size: 1.5rem;
+        }
+    }
+}
