@@ -24,6 +24,15 @@ export default class Calculator extends React.Component {
         }
     }
 
+    inputPercent(){
+         let currentValue = parseFloat(this.state.displayValue);
+
+         this.setState({
+             displayValue: String(currentValue /100)
+         });
+
+    }
+
     clearDisplay(){
         this.setState({displayValue : '0'});
     }
@@ -42,7 +51,7 @@ export default class Calculator extends React.Component {
                 <div className='line'>
                     <button onClick={this.clearDisplay.bind(this)}>AC</button>
                     <button onClick={this.toggleSign.bind(this)}>+/-</button>
-                    <button>%</button>
+                    <button onClick={this.inputPercent.bind(this)}>%</button>
                     <button>/</button>
                 </div>
                 <div className='line'>
