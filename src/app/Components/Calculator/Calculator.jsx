@@ -24,13 +24,24 @@ export default class Calculator extends React.Component {
         }
     }
 
+    clearDisplay(){
+        this.setState({displayValue : '0'});
+    }
+
+    toggleSign(){
+        let currentValue = this.state.displayValue;
+        this.setState({
+            displayValue : currentValue.charAt(0) === '-' ? currentValue.substring(1) : '-' + currentValue
+        });
+    }
+
     render(){
         return (
             <div id='calculate'>
                 <div className='line'>{this.state.displayValue}</div>
                 <div className='line'>
-                    <button>AC</button>
-                    <button>+/-</button>
+                    <button onClick={this.clearDisplay.bind(this)}>AC</button>
+                    <button onClick={this.toggleSign.bind(this)}>+/-</button>
                     <button>%</button>
                     <button>/</button>
                 </div>
