@@ -10,11 +10,15 @@ export default class Calculator extends React.Component {
     }
 
     inputDigit(e){
-        let digit = parseInt(e.target.value);
+        let digit = e.target.value;
         let currentValue = this.state.displayValue;
         this.setState({
-            displayValue: parseInt(currentValue) === 0 ? digit : currentValue + e.target.value
+            displayValue: currentValue === '0' ? digit : currentValue + digit
         });
+    }
+
+    inputDot(e){
+        this.setState({displayValue: this.state.displayValue + '.'});
     }
 
     render(){
@@ -47,7 +51,7 @@ export default class Calculator extends React.Component {
                 </div>
                 <div className='line'>
                     <button onClick={this.inputDigit.bind(this)} value='0'>0</button>
-                    <button>-</button>
+                    <button onClick={this.inputDot.bind(this)}>.</button>
                     <button>=</button>
                 </div>
             </div>
