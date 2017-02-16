@@ -12,13 +12,16 @@ export default class Calculator extends React.Component {
     inputDigit(e){
         let digit = e.target.value;
         let currentValue = this.state.displayValue;
+
         this.setState({
             displayValue: currentValue === '0' ? digit : currentValue + digit
         });
     }
 
     inputDot(e){
-        this.setState({displayValue: this.state.displayValue + '.'});
+        if(this.state.displayValue.indexOf('.') === -1){
+             this.setState({displayValue: this.state.displayValue + '.'});
+        }
     }
 
     render(){
