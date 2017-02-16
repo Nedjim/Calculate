@@ -18,17 +18,17 @@ body {
         }
         .line {
             display: block;
-            div {
-                width: 1.848rem;
-                height: 5vh;
+            button {
+                width: 3.125rem;
+                height: 6.250vh;
                 display: inline-block;
-                padding-top: 0.5rem;
-                padding-left: 1.2rem;
+                padding-top: 0.3rem;
+                padding-left: 1rem;
             }
         }
         .line:last-child {
-            div:first-child {
-                width: 4.9585rem;
+            button:first-child {
+                width: 6.250rem;
             }
         }
     }
