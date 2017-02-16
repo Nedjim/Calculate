@@ -12,16 +12,20 @@ export default class Calculator extends React.Component {
         }
     }
 
+    /*-------Affichage des digits sur l'écran------------*/
     inputDigit(e){
         let digit = e.target.value;
         let currentValue = this.state.displayValue;
 
+        //si on a cliqué sur un opérateur juste avant
+        //on efface les digit qu'on a écrit avant
         if(this.state.operand){
             this.setState({
                 displayValue : digit,
                 operand: false
             });
         }
+        //sinon on concatène
         else {
             this.setState({
                 displayValue: currentValue === '0' ? digit : currentValue + digit
@@ -29,40 +33,50 @@ export default class Calculator extends React.Component {
         }
     }
 
+    /*-----------Ajout du point au nombre----------*/
     inputDot(e){
+        //si on a cliqué sur un opérateur juste avant
+        //on efface et on affiche 0.
         if(this.state.operand){
             this.setState({
                 displayValue: '0.',
                 operand: false
             });
         }
+        //sinon on test si non déjà présent dans la chaîne
         else if(this.state.displayValue.indexOf('.') === -1){
+                //si il y en a pas on ajoute le point à la fin du nombre
                 this.setState({
                     displayValue: this.state.displayValue + '.',
-                    operand: false
                 });
         }
     }
-
+    /*----------------Pourcentage------------------- */
     inputPercent(){
+        //on convertit la chaine en floatant
          let currentValue = parseFloat(this.state.displayValue);
 
          this.setState({
+             //on divise la valeur par 100 et on la convertit en string
              displayValue: String(currentValue /100)
          });
     }
 
+    /*----------------Effacer-------------------------*/
     clearDisplay(){
         this.setState({displayValue : '0'});
     }
 
+    /*--------------Changement de signe-------------- */
     toggleSign(){
         let currentValue = this.state.displayValue;
+        //test le premier caractère de la chaine, si il y a un - on retourne la chaine à partir de l'indice 1 sinon on ajoute le -
         this.setState({
             displayValue : currentValue.charAt(0) === '-' ? currentValue.substring(1) : '-' + currentValue
         });
     }
 
+    /*-----------------Opérations--------------------*/
     operation(e){
         let displayValue =  this.state.displayValue;
         let operator = this.state.operator;
