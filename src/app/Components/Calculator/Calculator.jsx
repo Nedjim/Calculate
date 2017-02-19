@@ -32,7 +32,6 @@ export default class Calculator extends React.Component {
             });
         }
     }
-
     /*-----------Ajout du point au nombre----------*/
     inputDot(e){
         //si on a cliqué sur un opérateur juste avant
